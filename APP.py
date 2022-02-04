@@ -58,3 +58,12 @@ st.altair_chart(gp_chartsex, use_container_width=False)
 st.altair_chart(gp_chartcol, use_container_width=False)
 st.altair_chart(gp_charttres, use_container_width=False)
 plot_tab=pd.crosstab(df.age,df.target)
+
+scater_age_col=alt.Chart(df).mark_point().encode(
+    x='age',
+    y='chol',
+    color=alt.Color('target', legend=alt.Legend(title="age VS chol"))
+)
+
+
+st.altair_chart(scater,, use_container_width=False)
