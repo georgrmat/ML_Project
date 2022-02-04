@@ -66,4 +66,4 @@ scater_age_col=alt.Chart(df).mark_point().encode(
 )
 
 
-st.altair_chart(scater,, use_container_width=False)
+st.altair_chart(scater, use_container_width=False)
