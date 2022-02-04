@@ -110,7 +110,7 @@ var = st.radio(
 var_target=pd.crosstab(df[variable(var).name],df.target)
 
 dicvar=var_target.to_dict()
-dfvar=pd.concat({k: pd.Series(v) for k, v in dica.items()}).reset_index()
+dfvar=pd.concat({k: pd.Series(v) for k, v in dicvar.items()}).reset_index()
 dfvar.columns = ['0_1', 'level','variable']
 
 
