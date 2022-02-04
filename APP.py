@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import altair as alt
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 df=pd.read_csv('heart.csv')
