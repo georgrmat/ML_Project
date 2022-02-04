@@ -48,5 +48,6 @@ gp_chartsex = alt.Chart(dfsex).mark_bar().encode(
 
 
 st.altair_chart(gp_charta, use_container_width=False)
+st.altair_chart(gp_chartsex, use_container_width=False)
 
 plot_tab=pd.crosstab(df.age,df.target)
