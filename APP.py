@@ -7,7 +7,7 @@ df=pd.read_csv('heart.csv')
 st.dataframe(df)
 st.markdown("On propose en premier lieu de regarder quelques graphiques descriptive de notre base de donnée")
 
-age_target=pd.crosstab(df.age,df.target)
+age_target=pd.crosstab(df['age'],df['target'])
 sex_target=pd.crosstab(df.sex,df.target)
 trestbps_target=pd.crosstab(df.trestbps,df.target)
 chol_target=pd.crosstab(df.chol,df.target)
@@ -69,3 +69,24 @@ scater_age_col=alt.Chart(df).mark_point().encode(
 
 #trestbps
 st.altair_chart(scater_age_col, use_container_width=False)
+
+class variable(str):
+  
+  def__init(self,str)__:
+    
+    if str=='Age':
+      slef.name='age
+    if str=='Cholesterol':
+      self.name='chol'
+    if str=='Sex':
+      self.name='sex
+    if str=='Chest pain':
+      self.name='cp'
+    if str=='Resting blood pressure':
+      self.name='trestbps'
+    if str=='Fasting blood sugar':
+      self.name='fbs'
+    if str=='Resting electrocardiographic results':
+      self.name='restecg'
+       
+      
