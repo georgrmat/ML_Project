@@ -24,7 +24,7 @@ dicsex=sex_target.to_dict()
 dfsex=pd.concat({k: pd.Series(v) for k, v in dicsex.items()}).reset_index()
 dfsex.columns = ['0_1', 'level','variable']
 
-diccol=trestbps_target.to_dict()
+diccol=chol_target.to_dict()
 dfcol=pd.concat({k: pd.Series(v) for k, v in diccol.items()}).reset_index()
 dfcol.columns = ['0_1', 'level','variable']
 
