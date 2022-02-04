@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import altair as alt
+from sklearn.neighbors import KNeighborsClassifier
 
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
@@ -140,3 +141,17 @@ scater_var1_var2=alt.Chart(df).mark_point().encode(
 )
 
 st.altair_chart(scater_var1_var2, use_container_width=False)
+
+scoreList = []
+
+Model=st.radio(
+     "What is the model you want to use for the classification? ",
+     ('KNeighbors'))
+
+
+# for i in range(1,20):
+#     knn2 = KNeighborsClassifier(n_neighbors = i)  # n_neighbors means k
+#     knn2.fit(x_train.T, y_train.T)
+#     scoreList.append(knn2.score(x_test.T, y_test.T))
+
+
