@@ -75,7 +75,7 @@ class variable (str):
   def __init__(self,str):
     
     if str=='Age':
-      slef.name='age'
+      self.name='age'
     if str=='Cholesterol':
       self.name='chol'
     if str=='Sex':
