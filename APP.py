@@ -70,9 +70,9 @@ st.markdown("On propose en premier lieu de regarder quelques graphiques descript
 # #trestbps
 # st.altair_chart(scater_age_col, use_container_width=False)
 
-class variable(str):
+class variable (str):
   
-  def__init__(self,str):
+  def __init__(self,str):
     
     if str=='Age':
       slef.name='age
@@ -99,6 +99,8 @@ class variable(str):
       
       
 
+      
+      
       
 var = st.radio(
      "What is the variable that you chose?  ",
