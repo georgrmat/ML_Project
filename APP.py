@@ -72,7 +72,7 @@ st.altair_chart(scater_age_col, use_container_width=False)
 
 class variable(str):
   
-  def__init(self,str)__:
+  def__init__(self,str)__:
     
     if str=='Age':
       slef.name='age
