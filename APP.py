@@ -19,7 +19,7 @@ dfc.columns = ['0_1', 'level','number']
 gp_chart = alt.Chart(dfc).mark_bar().encode(
   alt.Column('0_1'), alt.X('level'),
   alt.Y('number', axis=alt.Axis(grid=False)), 
-  alt.Color('Player'))
+  alt.Color('0_1'))
 
 
 st.altair_chart(gp_chart, use_container_width=False)
