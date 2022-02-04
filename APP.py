@@ -92,7 +92,7 @@ class variable (str):
       self.name=='thalach'
     if str=='Exercise induced angina':
       self.name='exang'
-    if str=='ST depression induced by exercise relative to rest'
+    if str=='ST depression induced by exercise relative to rest':
       self.name='oldpeak'
     if str=='The slope of the peak exercise ST segment':
       self.name='slope'
