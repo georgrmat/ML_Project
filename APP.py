@@ -62,7 +62,7 @@ plot_tab=pd.crosstab(df.age,df.target)
 scater_age_col=alt.Chart(df).mark_point().encode(
     x='age',
     y='chol',
-    color=alt.Color('target', legend=alt.Legend(title="age VS chol"))
+    color=alt.Color('target',  scale=alt.Scale(scheme='dark2'),legend=alt.Legend(title="age VS chol"))
 )
 
 
