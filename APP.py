@@ -89,7 +89,7 @@ class variable (str):
     if str=='Resting electrocardiographic results':
       self.name='restecg'
     if str=='Maximum heart rate achieved':
-      self.name=='thalach'
+      self.name='thalach'
     if str=='Exercise induced angina':
       self.name='exang'
     if str=='ST depression induced by exercise relative to rest':
