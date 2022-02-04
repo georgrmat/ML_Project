@@ -10,7 +10,7 @@ st.markdown("On propose en premier lieu de regarder quelques graphiques descript
 age_target=pd.crosstab(df.age,df.target)
 sex_target=pd.crosstab(df.sex,df.target)
 trestbps_target=pd.crosstab(df.trestbps,df.target)
-chol_target=pd.crosstab(df.trestbps,df.target)
+chol_target=pd.crosstab(df.chol,df.target)
 
 dica=age_target.to_dict()
 dfa=pd.concat({k: pd.Series(v) for k, v in dica.items()}).reset_index()
