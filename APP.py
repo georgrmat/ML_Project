@@ -33,21 +33,28 @@ dfcol.columns = ['0_1', 'level','variable']
 gp_charta = alt.Chart(dfa).mark_bar().encode(
   alt.Column('0_1'), alt.X('level'),
   alt.Y('variable', axis=alt.Axis(grid=False)), 
-  alt.Color('level'))
+  alt.Color('0_1'))
+
+gp_chartcol = alt.Chart(dfcol).mark_bar().encode(
+  alt.Column('0_1'), alt.X('level'),
+  alt.Y('variable', axis=alt.Axis(grid=False)), 
+  alt.Color('0_1'))
+
 
 gp_charttres = alt.Chart(dftres).mark_bar().encode(
   alt.Column('0_1'), alt.X('level'),
   alt.Y('variable', axis=alt.Axis(grid=False)), 
-  alt.Color('level'))
+  alt.Color('0_1'))
 
 gp_chartsex = alt.Chart(dfsex).mark_bar().encode(
   alt.Column('0_1'), alt.X('level'),
   alt.Y('variable', axis=alt.Axis(grid=False)), 
-  alt.Color('level'))
+  alt.Color('0_1'))
 
 
 
 st.altair_chart(gp_charta, use_container_width=False)
 st.altair_chart(gp_chartsex, use_container_width=False)
-
+st.altair_chart(gp_chartcol, use_container_width=False)
+st.altair_chart(gp_charttres, use_container_width=False)
 plot_tab=pd.crosstab(df.age,df.target)
