@@ -74,8 +74,8 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     def train_classifieur(self,X_train,Y_train):
       self.algo.fit(X_train,Y_train)
     
-    def scor_classifieur(self):
-      return(self.algo.score(X_test.T,y_test.T)*100)
+    def scor_classifieur(self,X_test,Y_test):
+      return(self.algo.score(X_test,Y_test)*100)
       
      
 
@@ -137,4 +137,7 @@ Model=st.radio(
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
 choix_classif=classifieur(Model)
+choix_classifieur.train_classifieur(x_train,y_train)
+
+st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
 
