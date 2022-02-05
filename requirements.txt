@@ -1,2 +1,2 @@
 scikit-learn>=0.18
-xgboost_ray
+xgboost
