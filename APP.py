@@ -93,7 +93,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
   
-  def Grid_search_CrossV(selfX_train,Y_train,X_test,Y_test,score=False,best=False):
+  def Grid_search_CrossV(self,X_train,Y_train,X_test,Y_test,score=False,best=False):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
     search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
     result = search.fit(X_train, Y_train)
