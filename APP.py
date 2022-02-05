@@ -13,6 +13,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import Perceptron
 from sklearn.model_selection import GridSearchCV
+from xgboost import XGBClassifier 
 
 
 df=pd.read_csv('heart.csv')
@@ -100,6 +101,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     if str == 'Perceptron':
       self.algo = Perceptron(tol=1e-3, random_state=0)
       self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}     
+    
+    if str == 'XGBoost':
+      self.algo = XGBClassifier()
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
       
   def train_classifieur(self,X_train,Y_train):
     self.algo.fit(X_train,Y_train)
@@ -167,7 +172,7 @@ scoreList = []
 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
-     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree', 'Random Forest', 'Perceptron'))
+     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree', 'Random Forest', 'Perceptron', 'XGBoost'))
 
 
 # for i in range(1,20):
