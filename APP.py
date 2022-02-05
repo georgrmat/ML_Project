@@ -19,10 +19,16 @@ b = pd.get_dummies(df['thal'], prefix = "thal")
 c = pd.get_dummies(df['slope'], prefix = "slope")
 
 frames = [df, a, b, c]
-df = pd.concat(frames, axis = 1)
-df.head()
-df = df.drop(columns = ['cp', 'thal', 'slope'])
-df.head()
+df_dum = pd.concat(frames, axis = 1)
+df_dum = df_dum.drop(columns = ['cp', 'thal', 'slope'])
+
+y = df_dum.target.values
+x_data = df_dum.drop(['target'], axis = 1)
+#normalisation 
+x = (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
+
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)
+
 
 class variable (str):
   
@@ -53,11 +59,11 @@ class variable (str):
       
      
     
-class classifieur:#(str,par,X_trai,Y_train,X_test,Y_test):
+class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.algo=KNeighborsClassifier(n_neighbors = par)
+      self.algo=KNeighborsClassifier(n_neighbors = 10)
     if str=='Logistic Regression':
       self.algo= LogisticRegression()
     if str=='Support Vector Machine Algorithm':
@@ -130,5 +136,5 @@ Model=st.radio(
 #     knn2.fit(x_train.T, y_train.T)
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
-
+choix_classif=classifieur(Model,3,
 
