@@ -114,7 +114,7 @@ var1 = st.radio(
 
 var2 = st.radio(
      "What is the second variable that you chose?  ",
-     ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
+     ('Cholesterol','Age','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
 #('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
  #    'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
