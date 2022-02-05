@@ -52,7 +52,7 @@ class variable (str):
     
 class classifieur(str,par,X_trai,Y_train,X_test,Y_test):
   
-  def __init(self,str)__:
+  def __init__(self,str):
     if str=='KNeighbors'
     self.algo=KNeighborsClassifier(n_neighbors = par)
     if str=='Logistic Regression':
