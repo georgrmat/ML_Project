@@ -56,8 +56,8 @@ class variable (str):
 class classifieur(str,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str):
-    if str=='KNeighbors'
-    self.algo=KNeighborsClassifier(n_neighbors = par)
+    if str=='KNeighbors':
+      self.algo=KNeighborsClassifier(n_neighbors = par)
     if str=='Logistic Regression':
       self.algo= LogisticRegression()
     if str=='Support Vector Machine Algorithm':
