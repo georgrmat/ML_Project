@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.model_selection import GridSearchCV
 
 
 df=pd.read_csv('heart.csv')
@@ -82,6 +84,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        'kernel': ['rbf']}
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
       
       
   def train_classifieur(self,X_train,Y_train):
@@ -90,7 +93,14 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
   
-  def Grid_search(
+  def Grid_search_CrossV(selfX_train,Y_train,X_test,Y_test,score=False,best=False):
+    cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+    search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
+    result = search.fit(X_train, Y_train)
+    if score:
+      return(result.best_score_)
+    if best:
+      return(result.best_params_)
       
      
 
