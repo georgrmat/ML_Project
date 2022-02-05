@@ -1,4 +1,3 @@
-#Librairies
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -10,6 +9,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import Perceptron
 from sklearn.model_selection import GridSearchCV
 
 
@@ -87,6 +89,17 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo=GaussianNB() 
       self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
       
+    if str == 'Decision Tree':
+      self.algo = DecisionTreeClassifier()
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      
+    if str == 'Random Forest':
+      self.algo = RandomForestClassifier()
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      
+    if str == 'Perceptron':
+      self.algo = Perceptron(tol=1e-3, random_state=0)
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}     
       
   def train_classifieur(self,X_train,Y_train):
     self.algo.fit(X_train,Y_train)
@@ -154,7 +167,7 @@ scoreList = []
 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
-     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm'))
+     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree', 'Random Forest', 'Perceptron'))
 
 
 # for i in range(1,20):
