@@ -12,6 +12,7 @@ from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import Perceptron
+from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 
@@ -104,6 +105,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     
     if str == 'XGBoost':
       self.algo = XGBClassifier()
+      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+    
+    if str == 'Adaboost':
+      self.algo = AdaBoostClassifier(n_estimators=50, random_state=0)
       self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
       
   def train_classifieur(self,X_train,Y_train):
