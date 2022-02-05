@@ -97,10 +97,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
     search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
     result = search.fit(X_train, Y_train)
-    if score:
-      return(result.best_score_)
-    if best:
-      return(result.best_params_)
+    if score==True:
+      return(%result.best_score_)
+    if best==True:
+      return(%result.best_params_)
       
      
 
@@ -166,5 +166,5 @@ choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
 
-st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,x_test,y_test,score=True)
+st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,x_test,y_test,score=True,best=False)
 
