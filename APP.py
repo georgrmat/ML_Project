@@ -131,7 +131,7 @@ scoreList = []
 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
-     ('KNeighbors','LDA'))
+     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm'))
 
 
 # for i in range(1,20):
