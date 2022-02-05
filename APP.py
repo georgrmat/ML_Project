@@ -63,7 +63,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.algo=KNeighborsClassifier(n_neighbors = 10)
+      self.algo=KNeighborsClassifier(n_neighbors = 3)
     if str=='Logistic Regression':
       self.algo= LogisticRegression()
     if str=='Support Vector Machine Algorithm':
