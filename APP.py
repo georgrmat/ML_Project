@@ -136,5 +136,5 @@ Model=st.radio(
 #     knn2.fit(x_train.T, y_train.T)
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
-choix_classif=classifieur(Model,3,
+choix_classif=classifieur(Model)
 
