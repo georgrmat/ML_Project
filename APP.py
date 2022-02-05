@@ -136,7 +136,7 @@ Model=st.radio(
 #     knn2.fit(x_train.T, y_train.T)
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
-choix_classif=classifieur(Model)
+choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
