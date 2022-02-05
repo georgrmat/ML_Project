@@ -64,21 +64,33 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
       self.algo=KNeighborsClassifier(n_neighbors = 3)
+      self.grid_param={'n_neigbours':[3,5,10,15],
+                       'weights':['uniform','distance'],
+                       'metric':['euclidean','manhattan']}
+                       
+     
     if str=='Logistic Regression':
       self.algo= LogisticRegression()
+      self.grid_param={'solver':['newton-cg', 'lbfgs', 'liblinear'],
+                        'penalty':['none', 'l1', 'l2', 'elasticnet'],
+                      'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100]}
+      
     if str=='Support Vector Machine Algorithm':
       self.algo=SVC(random_state = 1)
+      self.grid_param={'C': [0.1, 1, 10, 100, 1000],
+                       'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
+                       'kernel': ['rbf']}
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
       
       
   def train_classifieur(self,X_train,Y_train):
-    
     self.algo.fit(X_train,Y_train)
     
   def scor_classifieur(self,X_test,Y_test):
-    
     return(self.algo.score(X_test,Y_test)*100)
+  
+  def Grid_search(
       
      
 
