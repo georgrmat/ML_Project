@@ -71,10 +71,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
       
-    def train_classifieur(self,X_train,Y_train):
+    def train_classifieur(X_train,Y_train):
       self.algo.fit(X_train,Y_train)
     
-    def scor_classifieur(self,X_test,Y_test):
+    def scor_classifieur(X_test,Y_test):
       return(self.algo.score(X_test,Y_test)*100)
       
      
