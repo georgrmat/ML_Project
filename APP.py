@@ -149,12 +149,13 @@ scoreList = []
 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
-     ('KNeighbors'))
+     ('KNeighbors','LDA'))
 
 
 # for i in range(1,20):
 #     knn2 = KNeighborsClassifier(n_neighbors = i)  # n_neighbors means k
 #     knn2.fit(x_train.T, y_train.T)
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
+
 
 
