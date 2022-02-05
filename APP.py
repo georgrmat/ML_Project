@@ -180,5 +180,5 @@ choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
 
-#st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
+st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
 
