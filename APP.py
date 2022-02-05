@@ -99,13 +99,15 @@ st.altair_chart(gp_chartvar, use_container_width=False)
   
 var1 = st.radio(
      "What is the first variable that you chose?  ",
-     ('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
-     'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
+      ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
+#('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
+     #'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
 var2 = st.radio(
      "What is the second variable that you chose?  ",
-     ('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
-     'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
+     ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
+#('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
+ #    'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
 
 scater_var1_var2=alt.Chart(df).mark_point().encode(
