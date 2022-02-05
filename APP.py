@@ -6,6 +6,9 @@ import sklearn
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+
 
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
