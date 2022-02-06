@@ -193,7 +193,7 @@ st.write("la précision de votre modèle est", choix_classifieur.scor_classifieu
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
   cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
   search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
-  result = search.fit(X_train, Y_train)
+  result = search.fit(x_train, y_train)
   st.write("la meilleur précision de votre modèle est",result.best_score_)
 
 ##st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
