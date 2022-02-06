@@ -71,9 +71,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
       self.algo=KNeighborsClassifier(n_neighbors = 3)
-      self.grid_param={'n_neigbours':[3,5,10,15],
-                       'weights':['uniform','distance'],
-                       'metric':['euclidean','manhattan']}
+      self.grid_param={'knn__n_neighbors': [3, 5, 7, 9, 11,15,17]}
+#         'n_neigbours':[3,5,10,15],
+#                        'weights':['uniform','distance'],
+#                        'metric':['euclidean','manhattan']}
                        
      
     if str=='Logistic Regression':
