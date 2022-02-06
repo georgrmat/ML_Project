@@ -21,6 +21,8 @@ df=pd.read_csv('heart.csv')
 st.dataframe(df)
 st.markdown("We begin by presenting the dataset,  ")
 
+variables_continues=['age','chol','trestbps','thalach','oldpeak']
+
 a = pd.get_dummies(df['cp'], prefix = "cp")
 b = pd.get_dummies(df['thal'], prefix = "thal")
 c = pd.get_dummies(df['slope'], prefix = "slope")
@@ -32,8 +34,9 @@ df_dum = df_dum.drop(columns = ['cp', 'thal', 'slope'])
 y = df_dum.target.values
 x_data = df_dum.drop(['target'], axis = 1)
 #normalisation 
-x = (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
-
+x =x_data.copy()# (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
+for n in variables_continue:
+  x[n]=(x[n]-mean(x[n]))/std(x[n])
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)
 
 
