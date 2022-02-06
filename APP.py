@@ -117,14 +117,14 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
   
-  def Grid_search_CrossV(self,X_train,Y_train,score=False,best=False):
-    cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-    search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
-    result = search.fit(X_train, Y_train)
-    if score==True:
-      return(result.best_score_)
-    if best==True:
-      return(result.best_params_)
+#   def Grid_search_CrossV(self,X_train,Y_train,score=False,best=False):
+#     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+#     search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
+#     result = search.fit(X_train, Y_train)
+#     if score==True:
+#       return(result.best_score_)
+#     if best==True:
+#       return(result.best_params_)
       
      
 
@@ -189,6 +189,12 @@ choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
+
+if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
+  cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
+  result = search.fit(X_train, Y_train)
+  st.write("la meilleur précision de votre modèle est",result.best_score_)
 
 ##st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
 
