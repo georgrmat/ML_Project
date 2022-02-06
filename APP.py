@@ -34,9 +34,10 @@ df_dum = df_dum.drop(columns = ['cp', 'thal', 'slope'])
 y = df_dum.target.values
 x_data = df_dum.drop(['target'], axis = 1)
 #normalisation 
-x =x_data.copy()# (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
-for n in variables_continues:
-  x[n]=(x[n]-np.mean(x[n]))/np.std(x[n])
+# x =x_data.copy()# (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
+# for n in variables_continues:
+#   x[n]=(x[n]-np.mean(x[n]))/np.std(x[n])
+x=(x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)
 
 
