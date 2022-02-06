@@ -71,7 +71,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
       self.algo=KNeighborsClassifier(algorithm='brute')
-      self.grid_param== {'n_neighbors':[4,5,6,7],
+      self.grid_param= {'n_neighbors':[4,5,6,7],
               'leaf_size':[1,3,5],
               'algorithm':['auto', 'kd_tree'],
               'n_jobs':[-1]}
