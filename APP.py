@@ -19,7 +19,7 @@ from xgboost import XGBClassifier
 
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
-st.markdown("On propose en premier lieu de regarder quelques graphiques descriptive de notre base de donnée")
+st.markdown("We begin by presenting the dataset,  ")
 
 a = pd.get_dummies(df['cp'], prefix = "cp")
 b = pd.get_dummies(df['thal'], prefix = "thal")
@@ -193,15 +193,15 @@ Model=st.radio(
 choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
-st.write("la précision de votre modèle est", choix_classifieur.scor_classifieur(x_test,y_test))
+st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
   cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
   search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
   result = search.fit(x_train, y_train)
-  st.write("la meilleur précision de votre modèle est",100*result.best_score_)
+  st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
-##st.write("la meilleur précision de votre modèle est",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
+##st.write("la préc",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
 
 # pipe = Pipeline([
 #         ('sc', StandardScaler()),     
