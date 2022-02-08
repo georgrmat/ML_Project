@@ -153,11 +153,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
 
  
 
-class hyper_par: 
-  
-  def __init__ (self,str):
-    
-    
+
       
       
 var = st.radio(
