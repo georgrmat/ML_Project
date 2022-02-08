@@ -214,7 +214,7 @@ choix_classifieur=classifieur(Model)
 dicc={}
 for k in choix_classifieur.grid_param.keys():
   l=choix_classifieur.grid_param[k]
-  if isinstance(l[0],int) or isinstance(l[0],float):
+  if (isinstance(l[0],int) or isinstance(l[0],float)):
     l.sort()
     dicc[k]=choix_classifieur.grid_param[k][0]
     dicc[k] =st.slider( f"For the parameter: {k}", l[0], l[-1], l[2]) 
