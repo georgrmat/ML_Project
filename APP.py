@@ -77,6 +77,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo=KNeighborsClassifier(algorithm='brute')
       self.grid_param= {'n_neighbors':[1,3,4,5,6,7,8,9,10,11,12,13],
               'leaf_size':[1,2,3,4,5,6,7,9],
+               'weights':['uniform','distance'],         
               'algorithm':['auto', 'kd_tree']}
       #{'knn__n_neighbors': [3, 5, 7, 9, 11,15,17]}
 #         'n_neigbours':[3,5,10,15],
@@ -197,10 +198,10 @@ choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
-
+st.write("Whould you like to tune your model using grid ")
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
   cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
+  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=5)
   result = search.fit(x_train, y_train)
   st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
