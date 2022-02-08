@@ -199,7 +199,7 @@ scater_var1_var2=alt.Chart(df).mark_point().encode(
 st.altair_chart(scater_var1_var2, use_container_width=False)
 
 scoreList = []
-testdicc =st.slider( "For the parameter:",step= 11.5,min_value0.0, max_value=100.98,value=10.5) 
+testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
      ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
