@@ -81,10 +81,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
 #              "algorithm": "auto",
 #              "leaf_size": 2}
       self.algo=KNeighborsClassifier()
-      self.grid_param= {"n_neighbors": [k for k in range(1,10)],
+      self.grid_param= {"n_neighbors": [k for k in range(1,19)],
+             "leaf_size": [k for k in range(1,20)],
              "weights": ["uniform", "distance"],
-             "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
-             "leaf_size": [k for k in range(1,20)]}
+             "algorithm": ["auto", "ball_tree", "kd_tree", "brute"]}
                        
      
     if str=='Logistic Regression':
