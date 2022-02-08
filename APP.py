@@ -199,7 +199,7 @@ Model=st.radio(
 choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
-user_input = st.text_input("You can plug in the parametr you want", default_value_goes_here)
+user_input = st.text_input("You can plug in the parametr you want", 5)
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
 st.markdown("we are going to explore the performance of your model with rispect to diverse parametrs")
