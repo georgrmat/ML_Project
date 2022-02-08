@@ -217,10 +217,9 @@ for k in choix_classifieur.grid_param.keys():
   if (isinstance(l[0],int) or isinstance(l[0],float)):
     l.sort()
     dicc[k]=choix_classifieur.grid_param[k][0]
-    dicc[k] =st.slider( f"For the parameter: {k}", l[0], l[-1], l[-1]) 
+    dicc[k] =st.slider( f"For the parameter: {k}",step= l[1]-l[0],min_value=l[0], max_value=l[-1],value= l[-1]) 
   else:
-    dicc[k]=st.radio(
-     f"For the parameter: {k}",l)
+    dicc[k]=st.radio(f"For the parameter: {k}",l)
     
 
     
