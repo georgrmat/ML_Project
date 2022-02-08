@@ -15,6 +15,7 @@ from sklearn.linear_model import Perceptron
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
+from sklearn.model_selection import RandomizedSearchCV
 
 
 df=pd.read_csv('heart.csv')
@@ -201,7 +202,8 @@ st.write("The precision of the standard model is :", choix_classifieur.scor_clas
 st.write("Whould you like to tune your model using grid ")
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
   #cv = RepeatedStratifiedKFold(n_splits=3, n_repeats=10, random_state=1)
-  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
+  #search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
+  search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
   result = search.fit(x_train, y_train)
   st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
