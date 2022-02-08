@@ -48,6 +48,7 @@ class variable (str):
     
     if str=='Age':
       self.name='age'
+      
     if str=='Cholesterol':
       self.name='chol'
     if str=='Sex':
@@ -73,9 +74,9 @@ class variable (str):
     
 class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
-  def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
+  def __init__(self,str,dic_pam):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.param_deflt={'n_neighbors':3}
+      self.param_deflt=dic_param
       self.algo=KNeighborsClassifier(n_neighbors=self.param_deflt['n_neighbors'])
       self.grid_param= {'n_neighbors':[1,3,4,5,6,7,8,9,10,11,12,13],
               'leaf_size':[1,2,3,4,5,6,7,9],
@@ -124,7 +125,11 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       
   def train_classifieur(self,X_train,Y_train):
     self.algo.fit(X_train,Y_train)
-    
+  
+  
+  def get_parametrs(self):
+    param=self.
+  
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
   
@@ -197,9 +202,11 @@ Model=st.radio(
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
 choix_classifieur=classifieur(Model)
+user_input = st.text_input("You can plug in the parametr you want", 5)
+choix_classifieur
 choix_classifieur.train_classifieur(x_train,y_train)
 
-user_input = st.text_input("You can plug in the parametr you want", 5)
+
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
 st.markdown("we are going to explore the performance of your model with rispect to diverse parametrs")
