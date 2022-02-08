@@ -105,7 +105,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     if str == 'Decision Tree':
       self.algo = DecisionTreeClassifier()
       self.grid_param = {'criterion':['gini','entropy'], 
-                         'max_depth': np.arange(3, 15)}
+                         'max_depth':[k for k in range(2,16)]}
       
     if str == 'Random Forest':
       self.algo = RandomForestClassifier()
