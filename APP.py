@@ -219,3 +219,20 @@ if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorith
 #                       cv=5,
 #                       return_train_score=True) 
 #     clf.fit(x_train, y_train)
+
+
+mds_mean = np.zeros(13)
+N_mean = 300
+
+for n in range(N_mean):
+    mds = []
+    for md in range(2,15):
+        tree3 = DecisionTreeClassifier(max_depth = md)  
+        tree3.fit(X_train, y_train)
+        #tree3.score(X_test, y_test)
+        mds.append(tree3.score(X_test, y_test)) 
+    mds_mean += np.array(mds)
+    print(n)
+    
+plt.plot([k for k in range(2,15)], 1/N_mean*mds_mean)
+plt.show()
