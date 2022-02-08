@@ -76,11 +76,11 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.param_deflt={"n_neighbors": 3,
-             "weights": "uniform",
-             "algorithm": "auto",
-             "leaf_size": 2}
-      self.algo=KNeighborsClassifier(**self.param_deflt)
+#       self.param_deflt={"n_neighbors": 3,
+#              "weights": "uniform",
+#              "algorithm": "auto",
+#              "leaf_size": 2}
+      self.algo=KNeighborsClassifier()
       self.grid_param= {"n_neighbors": [k for k in range(1,10)],
              "weights": ["uniform", "distance"],
              "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
@@ -88,6 +88,9 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        
      
     if str=='Logistic Regression':
+#       self.param_deflt={'solver':['newton-cg', 'lbfgs', 'liblinear'],
+#                         'penalty':['none', 'l1', 'l2', 'elasticnet'],
+#                       'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100]}
       self.algo= LogisticRegression()
       self.grid_param={'solver':['newton-cg', 'lbfgs', 'liblinear'],
                         'penalty':['none', 'l1', 'l2', 'elasticnet'],
