@@ -229,7 +229,7 @@ for k in choix_classifieur.grid_param.keys():
     
     
 #user_input = st.text_input("You can plug in the parametr you want", 5)
-choix_classifieur
+#choix_classifieur
 choix_classifieur.algo.set_params(**dicc)
 
 choix_classifieur.train_classifieur(x_train,y_train)
