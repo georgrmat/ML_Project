@@ -211,8 +211,27 @@ Model=st.radio(
 #     scoreList.append(knn2.score(x_test.T, y_test.T))
 
 choix_classifieur=classifieur(Model)
-user_input = st.text_input("You can plug in the parametr you want", 5)
+dicc={}
+for k in choix_classifieur.grid_param.keys():
+  l=choix_classifieur.grid_param[k]
+  if isinstance(l[0],int) or isinstance(l[0],float):
+    l.sort()
+    dicc[k]=choix_classifieur.grid_param[k][0]
+    dicc[k] =st.slider('For the parametr : ',k, l[0], l[-1], l[2]) 
+  else:
+    dicc[k]=st.radio(
+     f"For the parameter: {k}",l)
+    
+
+    
+ 
+    
+    
+    
+#user_input = st.text_input("You can plug in the parametr you want", 5)
 choix_classifieur
+choix_classifieur.algo.set_params(**dicc)
+
 choix_classifieur.train_classifieur(x_train,y_train)
 
 
@@ -234,11 +253,11 @@ if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorith
   
   
   
-name_dict = {"Anord":"", "Bernald":""}
+# name_dict = {"Anord":"", "Bernald":""}
 
-for k, v in name_dict.items():
-    name_dict[k] = st.text_input(k, v)
-    st.write(name_dict[k])
+# for k, v in name_dict.items():
+#     name_dict[k] = st.text_input(k, v)
+#     st.write(name_dict[k])
   
   
   
