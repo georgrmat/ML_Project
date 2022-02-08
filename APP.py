@@ -200,7 +200,7 @@ choix_classifieur.train_classifieur(x_train,y_train)
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 st.write("Whould you like to tune your model using grid ")
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
-  cv = RepeatedStratifiedKFold(n_splits=5, n_repeats=9, random_state=1)
+  cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
   search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
   result = search.fit(x_train, y_train)
   st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
