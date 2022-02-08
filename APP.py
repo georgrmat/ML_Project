@@ -88,18 +88,15 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        
      
     if str=='Logistic Regression':
-#       self.param_deflt={'solver':['newton-cg', 'lbfgs', 'liblinear'],
-#                         'penalty':['none', 'l1', 'l2', 'elasticnet'],
-#                       'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100]}
       self.algo= LogisticRegression()
       self.grid_param={'solver':['newton-cg', 'lbfgs', 'liblinear'],
                         'penalty':['none', 'l1', 'l2', 'elasticnet'],
-                      'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100]}
+                      'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0]}
       
     if str=='Support Vector Machine Algorithm':
       self.algo=SVC(random_state = 1)
-      self.grid_param={'C': [0.1, 1, 10, 100, 1000],
-                       'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
+      self.grid_param={'C': [0.1, 1.0, 10.0, 100.0, 1000.0],
+                       'gamma': [1.0, 0.1, 0.01, 0.001, 0.0001],
                        'kernel': ['rbf']}
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
