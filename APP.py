@@ -81,8 +81,8 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
 #              "algorithm": "auto",
 #              "leaf_size": 2}
       self.algo=KNeighborsClassifier()
-      self.grid_param= {"n_neighbors": [k for k in range(1,19)],
-             "leaf_size": [k for k in range(1,20)],
+      self.grid_param= {"n_neighbors": [k for k in range(1,5)],
+             "leaf_size": [k for k in range(1,5)],
              "weights": ["uniform", "distance"],
              "algorithm": ["auto", "ball_tree", "kd_tree", "brute"]}
                        
