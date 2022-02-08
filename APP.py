@@ -75,7 +75,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
       self.algo=KNeighborsClassifier(algorithm='brute')
-      self.grid_param= {'n_neighbors':[4,5,6,7],
+      self.grid_param= {'n_neighbors':[1,3,5,7,9,10],
               'leaf_size':[1,3,5],
               'algorithm':['auto', 'kd_tree'],
               'n_jobs':[-1]}
@@ -221,18 +221,18 @@ if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorith
 #     clf.fit(x_train, y_train)
 
 
-mds_mean = np.zeros(13)
-N_mean = 300
+# mds_mean = np.zeros(13)
+# N_mean = 300
 
-for n in range(N_mean):
-    mds = []
-    for md in range(2,15):
-        tree3 = DecisionTreeClassifier(max_depth = md)  
-        tree3.fit(X_train, y_train)
-        #tree3.score(X_test, y_test)
-        mds.append(tree3.score(X_test, y_test)) 
-    mds_mean += np.array(mds)
-    print(n)
+# for n in range(N_mean):
+#     mds = []
+#     for md in range(2,15):
+#         tree3 = DecisionTreeClassifier(max_depth = md)  
+#         tree3.fit(X_train, y_train)
+#         #tree3.score(X_test, y_test)
+#         mds.append(tree3.score(X_test, y_test)) 
+#     mds_mean += np.array(mds)
+#     print(n)
     
-plt.plot([k for k in range(2,15)], 1/N_mean*mds_mean)
-plt.show()
+# plt.plot([k for k in range(2,15)], 1/N_mean*mds_mean)
+#plt.show()
