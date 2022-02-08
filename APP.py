@@ -74,18 +74,17 @@ class variable (str):
     
 class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
-  def __init__(self,str,dic_pam):#,par,X_trai,Y_train,X_test,Y_test):
+  def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.param_deflt=dic_param
-      self.algo=KNeighborsClassifier(n_neighbors=self.param_deflt['n_neighbors'])
-      self.grid_param= {'n_neighbors':[1,3,4,5,6,7,8,9,10,11,12,13],
-              'leaf_size':[1,2,3,4,5,6,7,9],
-               'weights':['uniform','distance'],         
-              'algorithm':['auto', 'kd_tree']}
-      #{'knn__n_neighbors': [3, 5, 7, 9, 11,15,17]}
-#         'n_neigbours':[3,5,10,15],
-#                        'weights':['uniform','distance'],
-#                        'metric':['euclidean','manhattan']}
+      self.param_deflt={"n_neighbors": 3,
+             "weights": "uniform",
+             "algorithm": "auto",
+             "leaf_size": 2}
+      self.algo=KNeighborsClassifier(**self.param_deflt)
+      self.grid_param= {"n_neighbors": [k for k in range(1,10)],
+             "weights": ["uniform", "distance"],
+             "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
+             "leaf_size": [k for k in range(1,20)]}
                        
      
     if str=='Logistic Regression':
@@ -128,7 +127,8 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   
 #   def get_parametrs(self):
-#     param=self.
+#     param=self.param_deflt
+#     return(param)
   
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
@@ -144,7 +144,13 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       
      
 
-      
+ 
+
+class hyper_par: 
+  
+  def __init__ (self,str):
+    
+    
       
       
 var = st.radio(
