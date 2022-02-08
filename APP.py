@@ -230,6 +230,22 @@ if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorith
   result = search.fit(x_train, y_train)
   st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
+  
+  
+  
+  
+name_dict = {"Anord":"", "Bernald":""}
+
+for k, v in name_dict.items():
+    name_dict[k] = st.text_input(k, v)
+    st.write(name_dict[k])
+  
+  
+  
+  
+  
+  
+  
 ##st.write("la préc",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
 
 # pipe = Pipeline([
