@@ -189,7 +189,7 @@ var2 = st.radio(
 #('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
  #    'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
-
+ 
 scater_var1_var2=alt.Chart(df).mark_point().encode(
     x=variable(var1).name,
     y=variable(var2).name,
