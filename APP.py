@@ -75,7 +75,8 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
-      self.algo=KNeighborsClassifier(algorithm='brute')
+      self.param_deflt={'n_neighbors':3}
+      self.algo=KNeighborsClassifier(n_neighbors=self.param_deflt['n_neighbors'])
       self.grid_param= {'n_neighbors':[1,3,4,5,6,7,8,9,10,11,12,13],
               'leaf_size':[1,2,3,4,5,6,7,9],
                'weights':['uniform','distance'],         
@@ -198,7 +199,13 @@ Model=st.radio(
 choix_classifieur=classifieur(Model)
 choix_classifieur.train_classifieur(x_train,y_train)
 
+user_input = st.text_input("You can plug in the parametr you want", default_value_goes_here)
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
+
+st.markdown("we are going to explore the performance of your model with rispect to diverse parametrs")
+
+
+
 st.write("Whould you like to tune your model using grid ")
 if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
   #cv = RepeatedStratifiedKFold(n_splits=3, n_repeats=10, random_state=1)
