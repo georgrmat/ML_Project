@@ -104,15 +104,19 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       
     if str == 'Decision Tree':
       self.algo = DecisionTreeClassifier()
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      self.grid_param = {'criterion':['gini','entropy'], 
+                         'max_depth': np.arange(3, 15)}
       
     if str == 'Random Forest':
       self.algo = RandomForestClassifier()
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      self.grid_param={"n_estimators": [k for k in range(50,150)],
+                       "criterion": ["gini", "entropy"],
+                       "min_samples_split": [k for k in range(10)]}
       
     if str == 'Perceptron':
       self.algo = Perceptron(tol=1e-3, random_state=0)
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}     
+      self.grid_param={"penalty": ["l2","l1","elasticnet"],
+                      "l1_ratio": [k/20 for k in range(20)]}     
     
     if str == 'XGBoost':
       self.algo = XGBClassifier()
