@@ -75,10 +75,9 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     if str=='KNeighbors':
       self.algo=KNeighborsClassifier(algorithm='brute')
-      self.grid_param= {'n_neighbors':[1,3,5,7,9,10],
-              'leaf_size':[1,3,5],
-              'algorithm':['auto', 'kd_tree'],
-              'n_jobs':[-1]}
+      self.grid_param= {'n_neighbors':[1,3,4,5,6,7,8,9,10,11,12,13],
+              'leaf_size':[1,2,3,4,5,6,7,9],
+              'algorithm':['auto', 'kd_tree']}
       #{'knn__n_neighbors': [3, 5, 7, 9, 11,15,17]}
 #         'n_neigbours':[3,5,10,15],
 #                        'weights':['uniform','distance'],
