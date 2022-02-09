@@ -159,16 +159,6 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def scor_classifieur(self,X_test,Y_test):
     return(self.algo.score(X_test,Y_test)*100)
   
-#   def Grid_search_CrossV(self,X_train,Y_train,score=False,best=False):
-#     cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
-#     search = GridSearchCV(self.algo,self.grid_param, scoring='accuracy', n_jobs=-1, cv=cv)
-#     result = search.fit(X_train, Y_train)
-#     if score==True:
-#       return(result.best_score_)
-#     if best==True:
-#       return(result.best_params_)
-      
-     
 
  
 
@@ -260,16 +250,37 @@ st.write("The precision of the standard model is :", choix_classifieur.scor_clas
 st.markdown("we are going to explore the performance of your model with rispect to diverse parametrs")
 
 
+for (k,u) in dic_cont.items():
+  N_mean = 30
+  params_mean = np.zeros(len(u))
+  for n in range(N_mean):
+    params = []
+    for par in u:
+      params=dicc.copy()
+      params_m[k]=par
+      modl = choix_classifieur.algo(**params_m)  
+      modl.fit(x_train, y_train)
+      #tree3.score(X_test, y_test)
+      params.append(modl.score(x_test, y_test)) 
+    params_mean += np.array(params)
+  error={'par':u,'err': 1/N_mean*params_mean}
+  line11o = error.mark_line(color='#8A2BE2').encode(
+        x='par',
+        y='err',)
+  st.altair_chart(line11o, use_container_width=True)
+  
+  
+      
 
 st.write("Whould you like to tune your model using grid ")
-if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
-  #cv = RepeatedStratifiedKFold(n_splits=3, n_repeats=10, random_state=1)
-  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
-  #search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, n_iter = 100, cv = 20, verbose=2, random_state=1, n_jobs = -1)
-  result = search.fit(x_train, y_train)
-  st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
+#if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
+#cv = RepeatedStratifiedKFold(n_splits=3, n_repeats=10, random_state=1)
+search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
+#search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, n_iter = 100, cv = 20, verbose=2, random_state=1, n_jobs = -1)
+result = search.fit(x_train, y_train)
+st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
-  
+
   st.markdown("agregation arbk")
   
   
