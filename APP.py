@@ -99,7 +99,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo=SVC(random_state = 1)
       self.grid_param={'C': [0.1, 1.0, 10.0, 100.0, 1000.0],
                        'gamma': [1.0, 0.1, 0.01, 0.001, 0.0001],
-                       'kernel': ['rbf']}
+                       'kernel': ['rbf','linear']}
       
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
