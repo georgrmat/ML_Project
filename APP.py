@@ -251,7 +251,7 @@ st.markdown("we are going to explore the performance of your model with rispect 
 
 
 for (k,u) in dic_cont.items():
-  N_mean = 30
+  N_mean = 5
   params_mean = np.zeros(len(u))
   for n in range(N_mean):
     params = []
