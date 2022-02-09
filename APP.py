@@ -258,7 +258,7 @@ for (k,u) in dic_cont.items():
     for par in u:
       params_m=dicc.copy()
       params_m[k]=par
-      modl = choix_classifieur.algo(**params_m)  
+      modl = choix_classifieur.algo.set_params(**params_m)  
       modl.fit(x_train, y_train)
       #tree3.score(X_test, y_test)
       params.append(modl.score(x_test, y_test)) 
