@@ -121,9 +121,9 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
                       "l1_ratio": [k/20 for k in range(20)]}     
     
-    if str=='Extra Trees':
+    if str=='Extra Trees':	
       self.algo=ExtraTreesClassifier()
-	    self.grid_param={"n_estimators": [k for k in range(50,150)],
+      self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
                        "min_samples_split": [k for k in range(10)]}
     
