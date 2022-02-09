@@ -257,18 +257,21 @@ choice_svsparam = st.radio("Do you wish to see the score versus the parameters g
 
 if choice_svsparam == 'Yes':
   for (k,u) in dic_cont.items():
-  N_mean = 5
-  params_mean = np.zeros(len(u))
-  for n in range(N_mean):
-    params = []
-    for par in u:
-      params_m=dicc.copy()
-      params_m[k]=par
-      modl = choix_classifieur.algo.set_params(**params_m)  
-      modl.fit(x_train, y_train)
-      #tree3.score(X_test, y_test)
-      params.append(modl.score(x_test, y_test)) 
-    params_mean += np.array(params)
+    N_mean = 5
+    params_mean = np.zeros(len(u))
+    for n in range(N_mean):
+      
+      params = []
+      for par in u:
+        
+        params_m=dicc.copy()
+        params_m[k]=par
+        modl = choix_classifieur.algo.set_params(**params_m)  
+        modl.fit(x_train, y_train)
+        #tree3.score(X_test, y_test)
+        params.append(modl.score(x_test, y_test))
+        
+      params_mean += np.array(params)
   error={'par':u,'err': 1/N_mean*params_mean}
   df_err=pd.DataFrame.from_dict(error, orient='columns', dtype=None, columns=None)
   base=alt.Chart(df_err)
