@@ -213,6 +213,9 @@ Model=st.radio(
      "What is the model you want to use for the classification? ",
      ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
 
+manual_ = st.radio(
+     "Optimum parameters or manually chosen",
+     ('Optimum', 'Manual'))
 
 # for i in range(1,20):
 #     knn2 = KNeighborsClassifier(n_neighbors = i)  # n_neighbors means k
@@ -247,10 +250,13 @@ choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
-st.markdown("we are going to explore the performance of your model with rispect to diverse parametrs")
+st.markdown("Do you wish to see the score versus the parameters graph ?")
 
+choice_svsparam = st.radio("Do you wish to see the score versus the parameters graph ?",
+                           ('Yes', 'No'))
 
-for (k,u) in dic_cont.items():
+if choice_svsparam == 'Yes':
+  for (k,u) in dic_cont.items():
   N_mean = 5
   params_mean = np.zeros(len(u))
   for n in range(N_mean):
@@ -271,6 +277,13 @@ for (k,u) in dic_cont.items():
         y='err',)
   st.altair_chart(line11o, use_container_width=True)
   
+else:
+  pass
+  
+                   
+
+
+
   
       
 
