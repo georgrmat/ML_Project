@@ -75,14 +75,15 @@ class variable (str):
 class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
+    
     if str=='KNeighbors':
 #       self.param_deflt={"n_neighbors": 3,
 #              "weights": "uniform",
 #              "algorithm": "auto",
 #              "leaf_size": 2}
       self.algo=KNeighborsClassifier()
-      self.grid_param= {"n_neighbors": [k for k in range(2,12)],
-             "leaf_size": [k for k in range(2,50)],
+      self.grid_param= {"n_neighbors": [k for k in range(1,12)],
+             "leaf_size": [k for k in range(1,50)],
              "weights": ["uniform", "distance"],
              "algorithm": ["brute","auto", "ball_tree", "kd_tree"]}
                        
@@ -98,9 +99,10 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.grid_param={'C': [0.1, 1.0, 10.0, 100.0, 1000.0],
                        'gamma': [1.0, 0.1, 0.01, 0.001, 0.0001],
                        'kernel': ['rbf']}
+      
     if str=='Naive Bayes Algorithm':
       self.algo=GaussianNB() 
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      self.grid_param={}
       
     if str == 'Decision Tree':
       self.algo = DecisionTreeClassifier()
@@ -120,11 +122,13 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
     
     if str == 'XGBoost':
       self.algo = XGBClassifier()
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      self.grid_param={"booster": ["gbtree", "gblinear", "dart"]}
     
     if str == 'Adaboost':
       self.algo = AdaBoostClassifier(n_estimators=50, random_state=0)
-      self.grid_param={'alpha': [0.01, 0.1, 0.5, 1.0, 10.0],}
+      self.grid_param={"n_estimators": [k for k in range(20,100)],
+                       "learning_rate": [k/20 for k in range(20)],
+                       "algorithm": ["SAMME", "SAMME.R"]}
       
   def train_classifieur(self,X_train,Y_train):
     self.algo.fit(X_train,Y_train)
