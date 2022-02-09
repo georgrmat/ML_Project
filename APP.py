@@ -220,10 +220,12 @@ Model=st.radio(
 
 choix_classifieur=classifieur(Model)
 dicc={}
+dic_cont={}
 for k in choix_classifieur.grid_param.keys():
   l=choix_classifieur.grid_param[k]
   if (isinstance(l[0],int) or isinstance(l[0],float)):
     l.sort()
+    dic_cont[k]=l
     #dicc[k]=choix_classifieur.grid_param[k][0]
     dicc[k] =st.slider( f"For the parameter: {k}",step= (l[1]-l[0]),min_value=l[0], max_value=l[-1],value= l[-1]) 
   else:
