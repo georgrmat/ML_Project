@@ -264,7 +264,8 @@ for (k,u) in dic_cont.items():
       params.append(modl.score(x_test, y_test)) 
     params_mean += np.array(params)
   error={'par':u,'err': 1/N_mean*params_mean}
-  line11o = error.mark_line(color='#8A2BE2').encode(
+  df_err=DataFrame.from_dict(error, orient='columns', dtype=None, columns=None)
+  line11o = df_err.mark_line(color='#8A2BE2').encode(
         x='par',
         y='err',)
   st.altair_chart(line11o, use_container_width=True)
