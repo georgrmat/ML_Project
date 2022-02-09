@@ -11,6 +11,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import RepeatedStratifiedKFold
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.linear_model import Perceptron
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
@@ -119,6 +120,12 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo = Perceptron(tol=1e-3, random_state=0)
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
                       "l1_ratio": [k/20 for k in range(20)]}     
+    
+    if str=='Extra Trees'	:
+      self.algo=ExtraTreesClassifier()
+	    self.grid_param={"n_estimators": [k for k in range(50,150)],
+                       "criterion": ["gini", "entropy"],
+                       "min_samples_split": [k for k in range(10)]}
     
     if str == 'XGBoost':
       self.algo = XGBClassifier()
