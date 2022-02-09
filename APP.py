@@ -121,7 +121,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
                       "l1_ratio": [k/20 for k in range(20)]}     
     
-    if str=='Extra Trees'	:
+    if str=='Extra Trees':
       self.algo=ExtraTreesClassifier()
 	    self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
@@ -210,7 +210,7 @@ scoreList = []
 testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
-     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
+     ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
 
 
 # for i in range(1,20):
