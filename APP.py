@@ -281,7 +281,7 @@ result = search.fit(x_train, y_train)
 st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
 
-  st.markdown("agregation arbk")
+#   st.markdown("agregation arbk")
   
   
 # name_dict = {"Anord":"", "Bernald":""}
