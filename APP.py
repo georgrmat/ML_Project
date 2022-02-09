@@ -140,6 +140,17 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def train_classifieur(self,X_train,Y_train):
     self.algo.fit(X_train,Y_train)
   
+  def get_feature(self):
+    #Get features avec Random forest
+# from sklearn.feature_selection import RFE
+# from sklearn.linear_model import LogisticRegression
+# rfe_selector = RFE(estimator=LogisticRegression(), n_features_to_select=num_feats, step=10, verbose=5)
+# rfe_selector.fit(X_norm, y)
+# rfe_support = rfe_selector.get_support()
+# rfe_feature = X.loc[:,rfe_support].columns.tolist()
+# print(str(len(rfe_feature)), 'selected features')
+    return self.algo.get_feature
+  
   
 #   def get_parametrs(self):
 #     param=self.param_deflt
