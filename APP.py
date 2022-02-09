@@ -253,7 +253,7 @@ st.write("The precision of the standard model is :", choix_classifieur.scor_clas
 st.markdown("Do you wish to see the score versus the parameters graph ?")
 
 choice_svsparam = st.radio("Do you wish to see the score versus the parameters graph ?",
-                           ('Yes', 'No'))
+                           ('No','Yes'))
 
 if choice_svsparam == 'Yes':
   for (k,u) in dic_cont.items():
