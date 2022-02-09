@@ -114,7 +114,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo = RandomForestClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
-                       "min_samples_split": [k for k in range(10)]}
+                       "min_samples_split": [k for k in range(2,12)]}
       
     if str == 'Perceptron':
       self.algo = Perceptron(tol=1e-3, random_state=0)
@@ -125,7 +125,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.algo=ExtraTreesClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
-                       "min_samples_split": [k for k in range(10)]}
+                       "min_samples_split": [k for k in range(2,12)]}
     
     if str == 'XGBoost':
       self.algo = XGBClassifier()
