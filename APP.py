@@ -246,7 +246,7 @@ if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorith
   st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
   
-  
+  st.markdown("agregation arbk")
   
   
 # name_dict = {"Anord":"", "Bernald":""}
