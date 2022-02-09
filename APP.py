@@ -256,7 +256,7 @@ for (k,u) in dic_cont.items():
   for n in range(N_mean):
     params = []
     for par in u:
-      params=dicc.copy()
+      params_m=dicc.copy()
       params_m[k]=par
       modl = choix_classifieur.algo(**params_m)  
       modl.fit(x_train, y_train)
