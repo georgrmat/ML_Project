@@ -1,6 +1,6 @@
 import numpy as np
-import pandas as pd
-import streamlit as st
+import pandas as pd 
+import streamlit as st 
 import altair as alt
 import sklearn
 from sklearn.linear_model import LogisticRegression
@@ -18,7 +18,7 @@ from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
 
-
+st.markdown("We begin by presenting the dataset, in all what follows we are using a unique database of patients  ")
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
 st.markdown("We begin by presenting the dataset,  ")
