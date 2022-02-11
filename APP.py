@@ -17,9 +17,14 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
-st.title("comparator for usual classification algorithms")
-st.markdown("We begin by presenting the dataset, in all what follows we are using a unique database of patient's history of heart condition with respect to some atributes.  ")
-st.markdown("The **target variable** represent the presence or not of a heat condition")
+st.title("Comparator of usual classification algorithms")
+st.markdown(
+"90% of people love to enjoy music, while they are working! \n"
+"are you one of them, we have a curated list of chillout tracks \n"
+"that may help you bring out the calmness in you."
+)
+st.markdown("We begin by presenting the dataset, in all the study we are using a unique database of some patients history for heart condition with respect to some atributes.  ")
+st.markdown("The **target variable** represent the presence **1**, or not **0** of a heart condition")
 st.markdown("The **explicatives variables** are the following:")
 st.markdown("age : age in years")
 st.markdown("sex : (1 = male; 0 = female)")
