@@ -26,7 +26,7 @@ st.markdown("sex : (1 = male; 0 = female)")
 
 st.markdown("cp : chest pain type")
 st.markdown("trestbps : resting blood pressure (in mm Hg on admission to the hospital)")
-st.markdown(" chol : serum cholestoral in mg/dl)
+st.markdown(" chol : serum cholestoral in mg/dl)")
 st.markdown(" fbs : (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)")
 st.markdown("restecg : resting electrocardiographic results")
 st.markdown("thalach : maximum heart rate achieved")
