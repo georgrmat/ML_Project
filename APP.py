@@ -18,6 +18,7 @@ from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
 st.title("Comparator of usual classification algorithms")
+st.subheader('Plug into nirvana')
 st.markdown(
 "90% of people love to enjoy music, while they are working! \n"
 "are you one of them, we have a curated list of chillout tracks \n"
