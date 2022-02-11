@@ -18,12 +18,8 @@ from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
 st.title("Comparator of usual classification algorithms")
-st.subheader('Plug into nirvana')
-st.markdown(
-"90% of people love to enjoy music, while they are working! \n"
-"are you one of them, we have a curated list of chillout tracks \n"
-"that may help you bring out the calmness in you."
-)
+st.subheader("1. Introduction")
+
 st.markdown("We begin by presenting the dataset, in all the study we are using a unique database of some patients history for heart condition with respect to some atributes.  ")
 st.markdown("The **target variable** represent the presence **1**, or not **0** of a heart condition")
 st.markdown("The **explicatives variables** are the following:")
@@ -31,7 +27,7 @@ st.markdown("age : age in years")
 st.markdown("sex : (1 = male; 0 = female)")
 
 st.markdown("cp : *chest pain type*")
-st.markdown("trestbps : *resting blood pressure (in mm Hg on admission to the hospital)*")
+st.markdown("trestbps : *resting blood pressure -  \nline (in mm Hg on admission to the hospital)*")
 st.markdown(" chol : *serum cholestoral in mg/dl)*")
 st.markdown(" fbs : *(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)*")
 st.markdown("restecg : *resting electrocardiographic results*")
@@ -44,11 +40,7 @@ st.markdown("thal : *3 = normal; 6 = fixed defect; 7 = reversable defect*")
 st.markdown("We present you the dataset:")
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
-st.markdown("We can se that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
-st.markdown("For the continious variables, we will normalise them as the folowing")
-st.latex(r'''
-     X_{nor}=\frac{X-\mathbb{E}[X]}{sd[X]}
-     ''')
+
 
 variables_continues=['age','chol','trestbps','thalach','oldpeak']
 
@@ -234,8 +226,13 @@ scater_var1_var2=alt.Chart(df).mark_point().encode(
 
 st.altair_chart(scater_var1_var2, use_container_width=False)
 
+st.markdown("We can se that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
+st.markdown("For the continious variables, we will normalise them as the folowing")
+st.latex(r'''
+     X_{nor}=\frac{X-\mathbb{E}[X]}{sd[X]}
+     ''')
 scoreList = []
-testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
+#testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
      ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
