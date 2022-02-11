@@ -38,7 +38,11 @@ st.markdown("thal : *3 = normal; 6 = fixed defect; 7 = reversable defect*")
 st.markdown("We present you the dataset:")
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
-st.markdown("We begin by presenting the dataset,  ")
+st.markdown("We can se that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
+st.markdown("For the continious variables, we will normalise them as the folowing")
+st.latex(r'''
+     X_{nor}=\frac{X-\mathbb{E}[X]}{sd[X]}
+     ''')
 
 variables_continues=['age','chol','trestbps','thalach','oldpeak']
 
