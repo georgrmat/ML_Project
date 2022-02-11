@@ -24,23 +24,12 @@ st.markdown("We begin by presenting the dataset, in all the study we are using a
 st.markdown("The **target variable** represent the presence **1**, or not **0** of a heart condition")
 st.markdown("The **explicatives variables** are the following:")
 st.markdown("age : *age in years*  \n sex : *(1 = male; 0 = female)*  \n cp : *chest pain type*  \n trestbps : *resting blood pressure (in mm Hg on admission to the hospital)*  \n chol : *serum cholestoral in mg/dl)*  \n fbs : *(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)*  \n restecg : *resting electrocardiographic results*  \n thalach : *maximum heart rate achieved*  \n exang : *exercise induced angina (1 = yes; 0 = no)*  \n oldpeak : *ST depression induced by exercise relative to rest*  \n slope : *the slope of the peak exercise ST segment*  \n ca : *number of major vessels (0-3) colored by flourosopy*  \n thal : *3 = normal; 6 = fixed defect; 7 = reversable defect*")
-st.markdown("sex : (1 = male; 0 = female)")
 
-st.markdown("cp : *chest pain type*")
-st.markdown("trestbps : *resting blood pressure (in mm Hg on admission to the hospital)*")
-st.markdown(" chol : *serum cholestoral in mg/dl)*")
-st.markdown(" fbs : *(fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)*")
-st.markdown("restecg : *resting electrocardiographic results*")
-st.markdown("thalach : *maximum heart rate achieved*")
-st.markdown("exang : *exercise induced angina (1 = yes; 0 = no)*")
-st.markdown("oldpeak : *ST depression induced by exercise relative to rest*")
-st.markdown("slope : *the slope of the peak exercise ST segment*")
-st.markdown("ca : *number of major vessels (0-3) colored by flourosopy*")
-st.markdown("thal : *3 = normal; 6 = fixed defect; 7 = reversable defect*")
 st.markdown("We present you the dataset:")
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
 
+st.subheader("2. Data visualisation")
 
 variables_continues=['age','chol','trestbps','thalach','oldpeak']
 
