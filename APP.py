@@ -217,10 +217,14 @@ scater_var1_var2=alt.Chart(df).mark_point().encode(
 
 st.altair_chart(scater_var1_var2, use_container_width=False)
 
+st.subheader("3. Preprocessing Data")
 st.markdown("We can se that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
-st.markdown("For the continious variables, we will normalise them as the folowing")
+st.markdown("For the continious variables, since the notion of distance is used to do the classification, we dont want to influence it by an important discrepancy between the variables we will normalise/standardise them as the folowing")
 st.latex(r'''
-     X_{nor}=\frac{X-\mathbb{E}[X]}{sd[X]}
+     X_{sta}=\frac{X-\mathbb{E}[X]}{sd[X]}
+     ''')
+st.latex(r'''
+     X_{nor}=\frac{X-min(X)}{max(X)-min(X)}
      ''')
 scoreList = []
 #testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
