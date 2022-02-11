@@ -17,24 +17,25 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
-
+st.title("comparator for usual classification algorithms")
 st.markdown("We begin by presenting the dataset, in all what follows we are using a unique database of patient's history of heart condition with respect to some atributes.  ")
 st.markdown("The **target variable** represent the presence or not of a heat condition")
 st.markdown("The **explicatives variables** are the following:")
-st.markdown("age - age in years"
-           "sex - (1 = male; 0 = female)")
+st.markdown("age : age in years")
+st.markdown("sex : (1 = male; 0 = female)")
 
-# cp - chest pain type
-# trestbps - resting blood pressure (in mm Hg on admission to the hospital)
-# chol - serum cholestoral in mg/dl
-# fbs - (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)
-# restecg - resting electrocardiographic results
-# thalach - maximum heart rate achieved
-# exang - exercise induced angina (1 = yes; 0 = no)
-# oldpeak - ST depression induced by exercise relative to rest
-# slope - the slope of the peak exercise ST segment
-# ca - number of major vessels (0-3) colored by flourosopy
-# thal - 3 = normal; 6 = fixed defect; 7 = reversable defect
+st.markdown("cp : chest pain type")
+st.markdown("trestbps : resting blood pressure (in mm Hg on admission to the hospital)")
+st.markdown(" chol : serum cholestoral in mg/dl)
+st.markdown(" fbs : (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)")
+st.markdown("restecg : resting electrocardiographic results")
+st.markdown("thalach : maximum heart rate achieved")
+st.markdown("exang : exercise induced angina (1 = yes; 0 = no)")
+st.markdown("oldpeak : ST depression induced by exercise relative to rest")
+st.markdown("slope : the slope of the peak exercise ST segment")
+st.markdown("ca : number of major vessels (0-3) colored by flourosopy")
+st.markdown("thal : 3 = normal; 6 = fixed defect; 7 = reversable defect")
+st.markdown("We present you the dataset:")
 df=pd.read_csv('heart.csv')
 st.dataframe(df)
 st.markdown("We begin by presenting the dataset,  ")
