@@ -195,7 +195,7 @@ gp_chartvar = alt.Chart(dfvar).mark_bar().encode(
 st.altair_chart(gp_chartvar, use_container_width=False)
  
   
-st.markdown("Now, let's try to se if there exist some correlation between the chosen two variables at each timewith respect to having or not a heart condition. ")
+st.markdown("Now, let's try to se if there exist some correlation between the chosen two variables at each time with respect to having or not a heart condition. ")
 var1 = st.radio(
      "What is the first variable that you chose?  ",
       ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
