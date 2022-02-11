@@ -30,7 +30,7 @@ df=pd.read_csv('heart.csv')
 st.dataframe(df)
 
 st.subheader("2. Data visualisation")
-
+st.markdown("First, let's explore the distribution of the continious variables.   \n We leave the choise for the user.")
 variables_continues=['age','chol','trestbps','thalach','oldpeak']
 
 a = pd.get_dummies(df['cp'], prefix = "cp")
@@ -193,7 +193,9 @@ gp_chartvar = alt.Chart(dfvar).mark_bar().encode(
 
  
 st.altair_chart(gp_chartvar, use_container_width=False)
+ 
   
+  st.markdown("Now, let's try to se if there exist some correlation between the chosen two variables at each timewith respect to having or not a heart condition. ")
 var1 = st.radio(
      "What is the first variable that you chose?  ",
       ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
