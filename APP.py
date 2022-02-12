@@ -280,9 +280,9 @@ choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("The precision of the ",Model," model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
-st.markdown("Now, we are going to show a graph that may help you to tune your model with better parameters. It's a kind of a grid search on the numerical parametrs, but one parametrs at a time. ")
+st.markdown("Now, we are going to show a graph that may help you to tune your model with better parameters. It's a kind of a grid search on the numerical parametrs, but one parametr at a time. ")
 
-choice_svsparam = st.radio("Do you wish to see the score versus the parameters graph ?",
+choice_svsparam = st.radio("Do you wish to see the score versus the numerical parameters graph ?",
                            ('No','Yes'))
 
 if choice_svsparam == 'Yes':
