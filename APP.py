@@ -43,12 +43,6 @@ df_dum = df_dum.drop(columns = ['cp', 'thal', 'slope'])
 
 y = df_dum.target.values
 x_data = df_dum.drop(['target'], axis = 1)
-#normalisation 
-# x =x_data.copy()# (x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
-# for n in variables_continues:
-#   x[n]=(x[n]-np.mean(x[n]))/np.std(x[n])
-x=(x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
-x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)
 
 
 class variable (str):
@@ -226,6 +220,25 @@ st.latex(r'''
 st.latex(r'''
      X_{nor}=\frac{X-min(X)}{max(X)-min(X)}
      ''')
+
+processing = st.radio(
+                      "How would you like to preprocess your dataset ?",
+                      ("None", "Normalised", "Standardised"))
+
+if processing == "None":
+  x = x_data.copy()
+  
+elif processing == "Normalised":
+  x = x_data.copy()
+  x=(x_data - np.min(x_data)) / (np.max(x_data) - np.min(x_data)).values
+  
+elif processing == "Standardised":
+  x =x_data.copy()
+  for n in variables_continues:
+    x[n]=(x[n]-np.mean(x[n]))/np.std(x[n])
+    
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)  
+
 scoreList = []
 #testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
 Model=st.radio(
@@ -253,12 +266,7 @@ for k in choix_classifieur.grid_param.keys():
     dicc[k] =st.slider( f"For the parameter: {k}",step= (l[1]-l[0]),min_value=l[0], max_value=l[-1],value= l[-1]) 
   else:
     dicc[k]=st.radio(f"For the parameter: {k}",l)
-    
-
-    
- 
-    
-    
+  
     
 #user_input = st.text_input("You can plug in the parametr you want", 5)
 #choix_classifieur
