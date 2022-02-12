@@ -317,7 +317,7 @@ else:
   
       
 
- grid=st.radio("Do you wish to use the GridSearchCV or  RandomizedSearchCV to tune your model ?",
+grid=st.radio("Do you wish to use the GridSearchCV or  RandomizedSearchCV to tune your model ?",
                            ('No','GridSearchCV','RandomizedSearchCV'))
 
 if grid=='GridSearchCV':
