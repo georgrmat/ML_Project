@@ -299,13 +299,13 @@ if choice_svsparam == 'Yes':
         params.append(modl.score(x_test, y_test))
         
       params_mean += np.array(params)
-  error={'par':u,'err': 1/N_mean*params_mean}
-  df_err=pd.DataFrame.from_dict(error, orient='columns', dtype=None, columns=None)
-  base=alt.Chart(df_err)
-  line11o = base.mark_line(color='#8A2BE2').encode(
+   error={'par':u,'err': 1/N_mean*params_mean}
+   df_err=pd.DataFrame.from_dict(error, orient='columns', dtype=None, columns=None)
+   base=alt.Chart(df_err)
+   line11o = base.mark_line(color='#8A2BE2').encode(
         x='par',
         y='err',)
-  st.altair_chart(line11o, use_container_width=True)
+   st.altair_chart(line11o, use_container_width=True)
   
 else:
   pass
