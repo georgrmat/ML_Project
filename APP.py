@@ -252,8 +252,8 @@ Model=st.radio(
      ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
 
 
-st.markdown("At first hand, you may chose an arbitrary selection for your model's parametrs and see how it performs. ")
-st.markdown ("**Remark :** The score of the chosen model depends also on your choise in the data processing section.")
+st.markdown("At first hand, one may chose an arbitrary selection for the model's parametrs and see how it performs. ")
+st.markdown ("**Remark :** The score of the chosen model depends also on one's choise in the data processing section.")
 
 
 
@@ -280,7 +280,7 @@ choix_classifieur.train_classifieur(x_train,y_train)
 
 st.write("The precision of the ",Model," model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
-st.markdown("Now, we are going to show a graph that may help you to tune your model with better parameters. It's a kind of a grid search on the numerical parametrs, but one parametr at a time. ")
+st.markdown("Now, we are going to show a graph that may help tuning the model with better parameters. It's a kind of a grid search on the numerical parametrs, but one parametr at a time. ")
 
 choice_svsparam = st.radio("Do you wish to see the score versus the numerical parameters graph ?",
                            ('No','Yes'))
