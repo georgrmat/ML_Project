@@ -80,10 +80,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   def __init__(self,str):#,par,X_trai,Y_train,X_test,Y_test):
     
     if str=='KNeighbors':
-#       self.param_deflt={"n_neighbors": 3,
-#              "weights": "uniform",
-#              "algorithm": "auto",
-#              "leaf_size": 2}
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html"
       self.algo=KNeighborsClassifier()
       self.grid_param= {"n_neighbors": [k for k in range(1,12)],
              "leaf_size": [k for k in range(1,50)],
@@ -92,48 +89,57 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        
      
     if str=='Logistic Regression':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"
       self.algo= LogisticRegression()
       self.grid_param={'solver':['newton-cg', 'lbfgs', 'liblinear'],
                         'penalty':['none', 'l1', 'l2', 'elasticnet'],
                       'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0]}
       
     if str=='Support Vector Machine Algorithm':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"
       self.algo=SVC(random_state = 1)
       self.grid_param={'C': [0.1, 1.0, 10.0, 100.0, 1000.0],
                        'gamma': [1.0, 0.1, 0.01, 0.001, 0.0001],
                        'kernel': ['rbf','linear']}
       
     if str=='Naive Bayes Algorithm':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html"
       self.algo=GaussianNB() 
       self.grid_param={}
       
     if str == 'Decision Tree':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html"
       self.algo = DecisionTreeClassifier()
       self.grid_param = {'criterion':['gini','entropy'], 
                          'max_depth':[k for k in range(2,25)]}
       
     if str == 'Random Forest':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html"
       self.algo = RandomForestClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
                        "min_samples_split": [k for k in range(2,12)]}
       
     if str == 'Perceptron':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html"
       self.algo = Perceptron(tol=1e-3, random_state=0)
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
                       "l1_ratio": [k/20 for k in range(20)]}     
     
     if str=='Extra Trees':	
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html"
       self.algo=ExtraTreesClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
                        "criterion": ["gini", "entropy"],
                        "min_samples_split": [k for k in range(2,12)]}
     
     if str == 'XGBoost':
+      self.url="https://xgboost.readthedocs.io/en/stable/python/python_api.html"
       self.algo = XGBClassifier()
       self.grid_param={"booster": ["gbtree", "gblinear", "dart"]}
     
     if str == 'Adaboost':
+      self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html"
       self.algo = AdaBoostClassifier(n_estimators=50, random_state=0)
       self.grid_param={"n_estimators": [k for k in range(20,100)],
                        "learning_rate": [k/20 for k in range(20)],
@@ -164,14 +170,12 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
 
  
 
-
+#Data viz
       
       
 var = st.radio(
      "What is the variable that you chose?  ",
      ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
-#, 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
- #    'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
 var_target=pd.crosstab(df[variable(var).name],df.target)
 
@@ -193,14 +197,10 @@ st.markdown("Now, let's try to se if there exist some correlation between the ch
 var1 = st.radio(
      "What is the first variable that you chose?  ",
       ('Age', 'Cholesterol','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
-#('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
-     #'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
 var2 = st.radio(
      "What is the second variable that you chose?  ",
      ('Cholesterol','Age','ST depression induced by exercise relative to rest','Resting blood pressure','Maximum heart rate achieved'))
-#('Age', 'Cholesterol', 'Sex','Chest pain','Resting blood pressure','Fasting blood sugar','Resting electrocardiographic results','Maximum heart rate achieved',
- #    'Exercise induced angina','ST depression induced by exercise relative to rest','The slope of the peak exercise ST segment'))
 
  
 scater_var1_var2=alt.Chart(df).mark_point().encode(
@@ -212,7 +212,7 @@ scater_var1_var2=alt.Chart(df).mark_point().encode(
 st.altair_chart(scater_var1_var2, use_container_width=False)
 
 st.subheader("3. Preprocessing Data")
-st.markdown("We can se that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
+st.markdown("We can see that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
 st.markdown("For the continious variables, since the notion of distance is used to do the classification, we dont want to influence it by an important discrepancy between the variables we will normalise/standardise them as the folowing")
 st.latex(r'''
      X_{sta}=\frac{X-\mathbb{E}[X]}{sd[X]}
@@ -222,7 +222,7 @@ st.latex(r'''
      ''')
 
 processing = st.radio(
-                      "How would you like to preprocess your dataset ?",
+                      "How would you like to preprocess the dataset ?",
                       ("None", "Normalised", "Standardised"))
 
 if processing == "None":
@@ -239,20 +239,20 @@ elif processing == "Standardised":
     
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2,random_state=0)  
 
+
+st.subheader("4. Choice of the classifier")
+st.markdown("In this section we are going to explore the algorithm of your choise   ")
 scoreList = []
 #testdicc =st.slider( "For the parameter:",step= 11.5,min_value=0.0, max_value=100.98,value=10.5) 
 Model=st.radio(
      "What is the model you want to use for the classification? ",
      ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
 
-manual_ = st.radio(
-     "Optimum parameters or manually chosen",
-     ('Optimum', 'Manual'))
 
-# for i in range(1,20):
-#     knn2 = KNeighborsClassifier(n_neighbors = i)  # n_neighbors means k
-#     knn2.fit(x_train.T, y_train.T)
-#     scoreList.append(knn2.score(x_test.T, y_test.T))
+st.markdown("At first hand, you may chose an arbitrary selection of your model's parametrs and see how it performs. ")
+st.markdown ("**Remark :** The score of the chosen model depends on your choise of the data processing")
+
+
 
 choix_classifieur=classifieur(Model)
 dicc={}
@@ -275,9 +275,9 @@ choix_classifieur.algo.set_params(**dicc)
 choix_classifieur.train_classifieur(x_train,y_train)
 
 
-st.write("The precision of the standard model is :", choix_classifieur.scor_classifieur(x_test,y_test))
+st.write("The precision of the model is :", choix_classifieur.scor_classifieur(x_test,y_test))
 
-st.markdown("Do you wish to see the score versus the parameters graph ?")
+st.markdown("Now, we are going to show a graph that may help you to tune your model with better parameters. It's a kind of a grid search on the numerical parametrs, but one parametrs at a time. ")
 
 choice_svsparam = st.radio("Do you wish to see the score versus the parameters graph ?",
                            ('No','Yes'))
@@ -303,7 +303,7 @@ if choice_svsparam == 'Yes':
     df_err=pd.DataFrame.from_dict(error, orient='columns', dtype=None, columns=None)
     base=alt.Chart(df_err)
     line11o = base.mark_line(color='#8A2BE2').encode(
-        x='par',
+        x=f"{k}",
         y='err',)
     st.altair_chart(line11o, use_container_width=True)
   
@@ -317,31 +317,35 @@ else:
   
       
 
-st.write("Whould you like to tune your model using grid ")
-#if Model in ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm']:
-#cv = RepeatedStratifiedKFold(n_splits=3, n_repeats=10, random_state=1)
-search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
-#search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, n_iter = 100, cv = 20, verbose=2, random_state=1, n_jobs = -1)
-result = search.fit(x_train, y_train)
-st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
+ grid=st.radio("Do you wish to use the GridSearchCV or  RandomizedSearchCV to tune your model ?",
+                           ('No','GridSearchCV','RandomizedSearchCV'))
+
+if grid=='GridSearchCV':
+  search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)
+  result = search.fit(x_train, y_train)
+  st.write("The precision of the tuned model using GridSearchCV searsh is :",100*result.best_score_)
+ 
+elif grid=='RandomizedSearchCV':
+  search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)
+  result = search.fit(x_train, y_train)
+  st.write("The precision of the tuned model using RandomizedSearchCV searsh is :",100*result.best_score_)
+
+  
+else:
+  pass
+# search = GridSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, scoring='accuracy', n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1) #, scoring='accuracy', n_jobs=-1, cv=cv)
+# #search =RandomizedSearchCV(choix_classifieur.algo,choix_classifieur.grid_param)#, n_iter = 100, cv = 20, verbose=2, random_state=1, n_jobs = -1)
+# result = search.fit(x_train, y_train)
+# st.write("The precision of the tuned model using grid searsh is :",100*result.best_score_)
 
 
-#   st.markdown("agregation arbk")
-  
-  
-# name_dict = {"Anord":"", "Bernald":""}
 
-# for k, v in name_dict.items():
-#     name_dict[k] = st.text_input(k, v)
-#     st.write(name_dict[k])
   
   
   
   
   
   
-  
-##st.write("la préc",choix_classifieur.Grid_search_CrossV(x_train,y_train,score=True,best=False)
 
 # pipe = Pipeline([
 #         ('sc', StandardScaler()),     
@@ -356,19 +360,3 @@ st.write("The precision of the tuned model using grid searsh is :",100*result.be
 #                       return_train_score=True) 
 #     clf.fit(x_train, y_train)
 
-
-# mds_mean = np.zeros(13)
-# N_mean = 300
-
-# for n in range(N_mean):
-#     mds = []
-#     for md in range(2,15):
-#         tree3 = DecisionTreeClassifier(max_depth = md)  
-#         tree3.fit(X_train, y_train)
-#         #tree3.score(X_test, y_test)
-#         mds.append(tree3.score(X_test, y_test)) 
-#     mds_mean += np.array(mds)
-#     print(n)
-    
-# plt.plot([k for k in range(2,15)], 1/N_mean*mds_mean)
-#plt.show()
