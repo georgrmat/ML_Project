@@ -17,7 +17,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
-st.title("Comparator of usual classification algorithms")
+st.title("Comparator of usual classification models")
 st.subheader("1. Introduction")
 
 st.markdown("We begin by presenting the dataset, in all the study we are using a unique database of some patients history for heart condition with respect to some atributes.  ")
@@ -213,7 +213,7 @@ st.altair_chart(scater_var1_var2, use_container_width=False)
 
 st.subheader("3. Preprocessing Data")
 st.markdown("We can see that some of our explicatives variables (*'cp', 'thal' and 'slope'*) are categorical, we'll turn them into dummy variables. ")
-st.markdown("For the continious variables, since the notion of distance is used to do the classification, we dont want to influence it by an important discrepancy between the variables we will normalise/standardise them as the folowing")
+st.markdown("For the continious variables, since the notion of distance is used to do the classification, we dont want to influence the algorithm by an important discrepancy between the variables we will normalise/standardise them as the folowing")
 st.latex(r'''
      X_{sta}=\frac{X-\mathbb{E}[X]}{sd[X]}
      ''')
