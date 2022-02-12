@@ -124,7 +124,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html"
       self.algo = Perceptron(tol=1e-3, random_state=0)
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
-                      "l1_ratio": [k/20 for k in range(20)]}     
+                      "l1_ratio": [k/20 for k in range(1,20)]}     
     
     if str=='Extra Trees':	
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html"
@@ -142,7 +142,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html"
       self.algo = AdaBoostClassifier(n_estimators=50, random_state=0)
       self.grid_param={"n_estimators": [k for k in range(20,100)],
-                       "learning_rate": [k/20 for k in range(20)],
+                       "learning_rate": [k/20 for k in range(1,20)],
                        "algorithm": ["SAMME", "SAMME.R"]}
       
   def train_classifieur(self,X_train,Y_train):
