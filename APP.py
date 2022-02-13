@@ -17,6 +17,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier 
 from sklearn.model_selection import RandomizedSearchCV
+import threading
 
 
 
@@ -76,7 +77,7 @@ class variable (str):
     if str=='The slope of the peak exercise ST segment':
       self.name='slope'
       
-     
+ 
     
 class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
   
@@ -161,7 +162,12 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
 # rfe_feature = X.loc[:,rfe_support].columns.tolist()
 # print(str(len(rfe_feature)), 'selected features')
     return self.algo.get_feature
-  
+
+
+
+
+
+
   
 #   def get_parametrs(self):
 #     param=self.param_deflt
