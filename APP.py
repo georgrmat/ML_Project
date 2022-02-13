@@ -347,7 +347,11 @@ else:
 option = st.multiselect('Select the four modles you want to compaire :', ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'])
 st.write(option)  
   
-  
+if len(option)==3:
+  st.write("You have finished choosing ")
+  algo1=classifieur(option[0])
+  algo2=classifieur(option[1])
+  algo3=classifieur(option[2])
   
   
 
