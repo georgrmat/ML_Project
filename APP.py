@@ -343,8 +343,9 @@ else:
 
 
 
-  
-  
+
+option = streamlit.multiselect('Select the four modles you want to compaire :', ('KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'))
+st.write(option)  
   
   
   
