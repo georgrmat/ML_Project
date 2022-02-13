@@ -48,6 +48,13 @@ y = df_dum.target.values
 x_data = df_dum.drop(['target'], axis = 1)
 
 
+def zones_erreur(classifieur, X, y, i):
+    #renvoie la liste contenant les zones où le classifieur s'est trompé
+    erreurs = list(abs(classifieur.predict(X) - y))
+    zones_err = [k for k in range(len(erreurs)) if erreurs[k] == 1]
+    return zones_err, [i for _ in range(len(zones_err))]
+
+
 class variable (str):
   
   def __init__(self,str):
@@ -92,6 +99,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        
      
     if str=='Logistic Regression':
+      self.name = 'Logistic Regression'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"
       self.algo= LogisticRegression()
       self.grid_param={'solver':['newton-cg', 'lbfgs', 'liblinear'],
@@ -99,6 +107,7 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                       'C':[1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0]}
       
     if str=='Support Vector Machine Algorithm':
+      self.name = 'Support Vector Machine Algorithm'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html"
       self.algo=SVC(random_state = 1)
       self.grid_param={'C': [0.1, 1.0, 10.0, 100.0, 1000.0],
@@ -106,17 +115,20 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        'kernel': ['rbf','linear']}
       
     if str=='Naive Bayes Algorithm':
+      self.name = 'Naive Bayes Algorithm'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html"
       self.algo=GaussianNB() 
       self.grid_param={}
       
     if str == 'Decision Tree':
+      self.name = 'Decision Tree'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html"
       self.algo = DecisionTreeClassifier()
       self.grid_param = {'criterion':['gini','entropy'], 
                          'max_depth':[k for k in range(2,25)]}
       
     if str == 'Random Forest':
+      self.name = 'Random Forest'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html"
       self.algo = RandomForestClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
@@ -124,12 +136,14 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        "min_samples_split": [k for k in range(2,12)]}
       
     if str == 'Perceptron':
+      self.name = 'Perceptron'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html"
       self.algo = Perceptron(tol=1e-3, random_state=0)
       self.grid_param={"penalty": ["l2","l1","elasticnet"],
                       "l1_ratio": [k/20 for k in range(1,20)]}     
     
     if str=='Extra Trees':	
+      self.name = 'Extra Trees'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html"
       self.algo=ExtraTreesClassifier()
       self.grid_param={"n_estimators": [k for k in range(50,150)],
@@ -137,11 +151,13 @@ class classifieur:#(str):#,par,X_trai,Y_train,X_test,Y_test):
                        "min_samples_split": [k for k in range(2,12)]}
     
     if str == 'XGBoost':
+      self.name = 'XGBoost'
       self.url="https://xgboost.readthedocs.io/en/stable/python/python_api.html"
       self.algo = XGBClassifier()
       self.grid_param={"booster": ["gbtree", "gblinear", "dart"]}
     
     if str == 'Adaboost':
+      self.name = 'Adaboost'
       self.url="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html"
       self.algo = AdaBoostClassifier(n_estimators=50, random_state=0)
       self.grid_param={"n_estimators": [k for k in range(20,100)],
@@ -344,7 +360,7 @@ else:
 
 
 
-option = st.multiselect('Select the four modles you want to compaire :', ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'])
+option = st.multiselect('Select the three modeles you want to compare :', ['KNeighbors','Logistic Regression','Support Vector Machine Algorithm','Naive Bayes Algorithm','Decision Tree','Extra Trees', 'Random Forest', 'Perceptron', 'XGBoost','Adaboost'])
 st.write(option)  
   
 if len(option)==3:
@@ -352,6 +368,21 @@ if len(option)==3:
   algo1=classifieur(option[0])
   algo2=classifieur(option[1])
   algo3=classifieur(option[2])
+  algos = [algo1, algo2, algo3]
+  
+  dicc = {}
+  i = 1
+  for a in algos:
+    a.train_classifieur(x_train, y_train)
+    erreurs, abscisses = zones_erreur(a.algo, x_test, y_test, i)
+    dicc[a.name] = [erreurs, abscisses]
+    
+   
+
+    
+ 
+  
+
   
   
 
